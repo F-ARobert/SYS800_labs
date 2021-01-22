@@ -7,11 +7,12 @@ database = [];
 labels = [];
 
 display(length(dataset))
+
 for i = 1:1:length(dataset)  
-    tmp = dataset(i, :); % Extract 
+    tmp = dataset(i, :); % Extract img vector
     display(i)
-    img = make_img_matrix(tmp)
-    % Uncomment here to visualize img
+    img = make_img_matrix(tmp);
+    % Uncomment below to visualize img
     %colormap( gray );
     %imagesc( img );
     
