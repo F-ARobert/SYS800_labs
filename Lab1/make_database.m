@@ -10,6 +10,11 @@ display(length(dataset))
 for i = 1:1:length(dataset)  
     tmp = dataset(i, :); % Extract 
     display(i)
+    colormap( gray );
+    img = reshape( tmp, [28,28] );
+    img = rot90( img, 3 );
+    img = fliplr(img)
+    imagesc( img );
     %figure; image(i1');colormap(gray)
     if strcmpi(method, 'ZoneProject')
         % TO DO
