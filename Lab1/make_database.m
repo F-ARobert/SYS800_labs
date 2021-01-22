@@ -24,6 +24,7 @@ for i = 1:1:length(dataset)
 	%
      elseif strcmpi(method, 'LBP')
         % TO DO
+	
 	%
         database = extractLBP(img, parameters);
 	%
