@@ -8,7 +8,7 @@ labels = [];
 
 display(length(dataset))
 for i = 1:1:length(dataset)  
-    tmp = dataset(i, :);
+    tmp = dataset(i, :); % Extract 
     display(i)
     %figure; image(i1');colormap(gray)
     if strcmpi(method, 'ZoneProject')
