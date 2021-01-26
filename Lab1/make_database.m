@@ -26,7 +26,7 @@ for i = 1:1:length(dataset)
     if strcmpi(method, 'ZoneProject')
         % TO DO
 	%
-        database = extractProjZone(img, parameters);
+        database = extractProjZone(img, shape_image,shape_zones );
 	%
      elseif strcmpi(method, 'LBP')
         % TO DO

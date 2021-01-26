@@ -11,7 +11,7 @@ function [database] = extractProjZone(img,shape_image,shape_zones )
 
 %%
 % First: Need to reshape image to specified dimensions
-img = reshape( image_vector, [m,n]);
+img = reshape(image_vector, shape_image);
 
 
 %%
