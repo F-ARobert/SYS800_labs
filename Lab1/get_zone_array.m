@@ -11,46 +11,45 @@ function emtpy_zone_array = get_zone_array(shape_image, shape_zones)
 %       zones of specified size
 
 % Get dimensions
-z_rows = uint16(round(shape_image(1)/shape_zones(1), 0));
+z_dim = uint16(shape_image)./uint16(shape_zones);
 % Tests for right shape
-assert(isa(z_rows,'uint16'), 'z_rows is not an unsigned integer');
+assert(isa(z_dim(1),'uint16'), 'z_dim(1) is not an unsigned integer');
 
 if shape_image(1) == 60
     if shape_zones(1) == 5
-        assert((z_rows == 12),'z_rows not equal 12');
+        assert((z_dim(1) == 12),'z_dim(1) not equal 12');
     elseif shape_zones(1) == 10
-        assert((z_rows == 6),'z_rows not equal 6');
+        assert((z_dim(1) == 6),'z_dim(1) not equal 6');
     end
 elseif shape_image(1) == 100
     if shape_zones(1) == 5
-        assert((z_rows == 20),'z_rows not equal 20');
+        assert((z_dim(1) == 20),'z_dim(1) not equal 20');
     elseif shape_zones(1) == 10
-        assert((z_rows == 10),'z_rows not equal 10');
+        assert((z_dim(1) == 10),'z_dim(1) not equal 10');
     end
 else
-    assert(1==0,'Other error occured in z_rows');
+    assert(1==0,'Other error occured in z_dim(1)');
 end
 
-z_cols = uint16(round(shape_image(2)/shape_zones(2),0));
 % Tests for right shape
-assert(isa(z_cols,'uint16'), 'z_cols is not an unsigned integer');
+assert(isa(z_dim(2),'uint16'), 'z_dim(2) is not an unsigned integer');
 if shape_image(2) == 50
     if shape_zones(2) == 5
-        assert((z_cols == 10), 'z_cols not equal 10');
+        assert((z_dim(2) == 10), 'z_dim(2) not equal 10');
     elseif shape_zones(2) == 10
-        assert((z_cols == 5),'z_cols not equal 5');
+        assert((z_dim(2) == 5),'z_dim(2) not equal 5');
     end
 elseif shape_image(2) == 80
     if shape_zones(2) == 5
-        assert((z_cols == 16),'z_cols not equal 16');
+        assert((z_dim(2) == 16),'z_dim(2) not equal 16');
     elseif shape_zones(2) == 10
-        assert((z_cols == 8),'z_cols not equal 8');
+        assert((z_dim(2) == 8),'z_dim(2) not equal 8');
     end
 else
-    assert(1==0,'Other error occured in z_cols');
+    assert(1==0,'Other error occured in z_dim(2)');
 end
 
-emtpy_zone_array = zeros(z_rows,z_cols,'uint16');
-assert(size(emtpy_zone_array, 1) == z_rows);
-assert(size(emtpy_zone_array, 2) == z_cols);
+emtpy_zone_array = zeros(z_dim,'uint16');
+assert(size(emtpy_zone_array, 1) == z_dim(1));
+assert(size(emtpy_zone_array, 2) == z_dim(2));
 end

@@ -17,7 +17,7 @@ img = imresize(img, shape_image, 'bilinear');
 %%
 % Get Zone array dimensions
 img_zone = get_zone_array(shape_image, shape_zones);
-
+%assert(size(img_zone) == [
 
 
 end
