@@ -11,10 +11,12 @@ function [database] = extractProjZone(img,shape_image,shape_zones )
 
 %%
 % First: Need to reshape image to specified dimensions
-img = reshape(image_vector, shape_image);
-
-
+img = imresize(img, shape_image, 'bilinear');
+% Uncomment below to visualize img
+% colormap( gray );
+% imagesc( img );
 %%
+
 
 
 end
