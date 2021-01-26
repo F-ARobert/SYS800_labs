@@ -1,11 +1,9 @@
-function [database] = extractProjZone(img, parameters)
+function [database] = extractProjZone(img,shape_image,shape_zones )
 % Feature extraction using ZONE projection method
 % Inputs are:
-%       img: Image 
-%       m  : Number of rows to reshape image to
-%       n  : Number of columns to rehsape image to
-%       mz : Rows per zone
-%       mz : Columns per zone
+%       img         : Image 
+%       shape_image : Shape of images as vector
+%       shape_zones : Shape of zones as vector
 %
 % Ouputs:
 %       database: Image caracteristics vector
@@ -13,7 +11,7 @@ function [database] = extractProjZone(img, parameters)
 
 %%
 % First: Need to reshape image to specified dimensions
-
+img = reshape( image_vector, [m,n]);
 
 
 %%

@@ -6,6 +6,13 @@ ind = 0;
 database = [];
 labels = [];
 
+% Zone projection parameters
+shape_image = [60 50];
+shape_zones = [5 5];
+
+
+
+
 display(length(dataset))
 
 for i = 1:1:length(dataset)  
