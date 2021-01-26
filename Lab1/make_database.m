@@ -11,13 +11,11 @@ shape_image = [60 50];
 shape_zones = [5 5];
 
 
-
-
-display(length(dataset))
+%display(length(dataset));
 
 for i = 1:1:length(dataset)  
     tmp = dataset(i, :); % Extract img vector
-    display(i)
+    %display(i)
     img = make_img_matrix(tmp);
     % Uncomment below to visualize img
     %colormap( gray );
