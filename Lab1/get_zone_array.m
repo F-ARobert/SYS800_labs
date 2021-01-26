@@ -1,4 +1,4 @@
-function [emtpy_zone_array] = get_zone_array(shape_image, shape_zones)
+function emtpy_zone_array = get_zone_array(shape_image, shape_zones)
 % Function returns empty array representing the image diced into zones of
 % specified shape
 %
