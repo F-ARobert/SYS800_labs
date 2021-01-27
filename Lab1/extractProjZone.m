@@ -28,15 +28,22 @@ img_split = mat2cell(img, repelem(shape_zones(1), size(img_zoned,1)), ...
 for i = 1:size(img_split,1)
     for j = 1:size(img_split,2)
         h = sum(img_split{i,j});
-        h = int16(h);
+        h = uint16(h);
         img_zoned(i,j) = mean(h);
     end
 end
 
 % Uncomment below to visualize img_zoned
-colormap( gray );
-imagesc( img_zoned );
+% colormap( gray );
+% imagesc( img_zoned );
 %%
-% Vectorize
+% Vectorize img_zoned
+database = img_zoned(:)';
+
+% Append means of rows and columns
+m_rows = uint16(round(mean(img_zoned,2)))';
+m_cols = uint16(round(mean(img_zoned)));
+
+database = [database m_rows m_cols];
 
 end
