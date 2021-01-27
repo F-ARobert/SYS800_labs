@@ -10,17 +10,31 @@ function [database] = extractProjZone(img,shape_image,shape_zones )
 
 %%
 % First: Need to reshape image to specified dimensions
-img = imresize(img, shape_image, 'bilinear');
+img = round(imresize(img, shape_image, 'bilinear'));
 % Uncomment below to visualize img
 % colormap( gray );
 % imagesc( img );
 %%
 % Get empty Zone array (to hole compressed image)
-img_compressed = get_zone_array(shape_image, shape_zones);
+database = get_zone_array(shape_image, shape_zones);
 
 %%
 % Process each zone in the image
 
+% Split image into sub arrays
+img_split = mat2cell(img, repelem(shape_zones(1), size(database,1)), ...
+        repelem(shape_zones(2), size(database,2)));
 
+for i = 1:size(img_split,1)
+    for j = 1:size(img_split,2);
+        h = sum(img_split{i,j});
+        h = int16(h);
+        database(i,j) = mean(h);
+    end
+end
+
+% Uncomment below to visualize database
+colormap( gray );
+imagesc( database );
 
 end
