@@ -15,8 +15,11 @@ img = imresize(img, shape_image, 'bilinear');
 % colormap( gray );
 % imagesc( img );
 %%
-% Get Zone array dimensions
-img_zone = get_zone_array(shape_image, shape_zones);
+% Get empty Zone array (to hole compressed image)
+img_compressed = get_zone_array(shape_image, shape_zones);
+
+%%
+% Process each zone in the image
 
 
 
