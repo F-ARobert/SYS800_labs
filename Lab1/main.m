@@ -28,7 +28,9 @@ train_label = mnisttrain(:, 1);
 % TO DO .....
 method = 'ZoneProject';
 % parameters: 
-parameters = 1;
+% Zone projection parameters
+shape_image = [60 50];
+shape_zones = [5 5];
 % I) Feature extraction using ZONE
 [database] = make_database(train_data, method ,parameters);
 % Save the features in .mat file
