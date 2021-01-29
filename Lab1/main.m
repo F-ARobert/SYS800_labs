@@ -53,7 +53,7 @@ save(['zone_' num2str(img_m) 'x' num2str(img_m) '_learning'], 'database', 'train
 %%% Dimensionality reduction using PCA
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Calculate the principal components
-[V, G] = acp(database, energy)
+[V, G] = acp(database, energy);
 
 % TO DO 
 % Project the database into the principal components 
