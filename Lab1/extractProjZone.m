@@ -38,7 +38,7 @@ end
 % imagesc( img_zoned );
 %%
 % Vectorize img_zoned
-database = img_zoned(:)';
+database = reshape(img_zoned',[1 numel(img_zoned)]);
 
 % Append means of rows and columns
 m_rows = uint16(round(mean(img_zoned,2)))';
