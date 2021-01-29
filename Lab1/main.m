@@ -32,7 +32,7 @@ method = 'ZoneProject';
 shape_image = [60 50];
 shape_zones = [5 5];
 % I) Feature extraction using ZONE
-[database] = make_database(train_data, method ,parameters);
+[database] = make_database(train_data, method, shape_image, shape_zones);
 % Save the features in .mat file
 save(['zone_' num2str(img_m) 'x' num2str(img_m) '_learning'], 'database', 'train_label');
 

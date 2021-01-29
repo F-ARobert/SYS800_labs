@@ -2,8 +2,6 @@ function [database, labels] = make_database(dataset, method, parameters1, parame
 % feature extraction using the ZONE projection method and the LBP technique
 %
 %
-ind = 0; 
-database = [];
 labels = [];
 
 
@@ -19,13 +17,16 @@ for i = 1:1:length(dataset)
     
     if strcmpi(method, 'ZoneProject')
         % TO DO
-	%
-        database = extractProjZone(img, parameters1, parameters2);
+        nb_columns = prod(parameters1./parameters2)+sum(parameters1./parameters2);
+        database = zeros(size(dataset,1),nb_columns);
+        %display(size(database))
+        database(i,:) = extractProjZone(img, parameters1, parameters2);
 	%
      elseif strcmpi(method, 'LBP')
         % TO DO
 	%
-        database = extractLBP(img, parameters1, parameters2);
+        database = [];
+        database(i) = extractLBP(img, parameters1, parameters2);
 	%
     end
 end
