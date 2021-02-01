@@ -3,8 +3,6 @@ function [database, labels] = make_database(dataset, method, parameters1, parame
 %
 %
 labels = [];
-
-
 %display(length(dataset));
 
 for i = 1:1:length(dataset)  
@@ -16,7 +14,6 @@ for i = 1:1:length(dataset)
     %imagesc( img );
     
     if strcmpi(method, 'ZoneProject')
-        % TO DO
         nb_columns = prod(parameters1./parameters2)+sum(parameters1./parameters2);
         database = zeros(size(dataset,1),nb_columns);
         %display(size(database))
@@ -24,7 +21,8 @@ for i = 1:1:length(dataset)
 	%
      elseif strcmpi(method, 'LBP')
         % TO DO
-	%
+        % ADD: method to calculate number of colums in dataset. This will
+        % speed up execution
         database = [];
         database(i) = extractLBP(img, parameters1, parameters2);
 	%
