@@ -2,7 +2,7 @@ function output = chevauchement(database,labels)
 % output = overlap_v2(database,labels)
 %    data => [nb_features,nb_samples]
 %    labels => [1,nb_samples];
-
+database = database';
 [~,nb_samples] = size(database);
 decisions = zeros(1,nb_samples);
 
