@@ -25,7 +25,6 @@ train_label = mnisttrain(:, 1);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %         Zone projection method
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TO DO .....
 method = 'ZoneProject';
 % parameters: 
 % Zone projection parameters
