@@ -33,7 +33,7 @@ shape_zones = [5 5];
 % I) Feature extraction using ZONE
 [database] = make_database(train_data, method, shape_image, shape_zones);
 % Save the features in .mat file
-save(['zone_' num2str(img_m) 'x' num2str(img_m) '_learning'], 'database', 'train_label');
+save(['size_' num2str(shape_image) '_zone_' num2str(shape_zones) '_learning'], 'database', 'train_label');
 
 %% Comment this section if the zone projection method is used
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
