@@ -3,15 +3,15 @@ function output = chevauchement(database,labels)
 %    data => [nb_features,nb_samples]
 %    labels => [1,nb_samples];
 
-[nb_features,nb_samples] = size(database);
-decision = zeros(1,nb_samples);
+[~,nb_samples] = size(database);
+decisions = zeros(1,nb_samples);
 
 for i=1:nb_samples
     index_prototypes = [(1:i-1) (i+1:nb_samples)];
     prototypes = database(:,index_prototypes);
     test_sample = database(:,i);
     distances = sqrt(sum((prototypes - test_sample*ones(1,nb_samples-1)).^2));
-    [distance_nn,index_nn] = min(distances);
+    [~,index_nn] = min(distances);
     decisions(i) = labels(index_prototypes(index_nn));
 end
 
