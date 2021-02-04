@@ -28,18 +28,10 @@ elseif r==5
     y=zeros(1,32);
     imglecture=[x,imglecture,x];
     imglecture=[y;imglecture;y];
+    puiss=[1 2 4 8 16;32768 0 0 0 32;16384 0 0 0 64;8192 0 0 0 128;4096 2048 1024 512 256];
     for i= 3:1:29
         for j=3:1:29
-            a=mean(mean(imglecture(i-2:i-1,j-2:j-1)));
-            b=mean(mean(imglecture(i-2:i-1,j)));
-            c=mean(mean(imglecture(i-2:i-1,j+1:j+2)));
-            d=mean(mean(imglecture(i,j+1:j+2)));
-            e=mean(mean(imglecture(i+1:i+2,j+1:j+2)));
-            f=mean(mean(imglecture(i+1:i+2,j)));
-            g=mean(mean(imglecture(i+1:i+2,j-2:j-1)));
-            h=mean(mean(imglecture(i,j-2:j-1)));
-            A=[a b c;h 0 d;g f e]
-            img(i-1,j-1)=sum(sum((imglecture(i-1:i+1,j-1:j+1)>imglecture(i,j)).*puiss));
+            img(i-1,j-1)=sum(sum((imglecture(i-2:i+2,j-2:j+2)>imglecture(i,j)).*puiss));
             
        end 
     end
@@ -49,22 +41,22 @@ end
 %display(img);
 %colormap( gray );
 %imagesc( img );
-mzero=zeros(((28/b)^2),256);
+mzero=zeros(1,((28/b)^2)*128);
 indice=0;
 %display(max(max(img)));
 for i= 1:b:28
         for j=1:b:28
-            indice=indice+1;
+            indice=indice+128;
             m=img(i:i+b-1,j:j+b-1);
             m=m(:);
-            for k=1:1:length(m)
-                mzero(indice,m(k)+1)=mzero(indice,m(k)+1)+1;
-            end
+            mzero(indice-127:indice)=hist(m,128)
         end
-        %display(mzero);
+        
 end
+
 database=mzero;
+
 
             
             
-end     
+end 
