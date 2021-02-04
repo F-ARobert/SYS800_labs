@@ -30,19 +30,19 @@ method = 'ZoneProject';
 all_img_sizes = [60 50; 100 80];
 all_zone_sizes = [5 5; 10 10];
 
-% for i = 1:size(all_img_sizes, 1)+1
-%     for j = 1:size(all_zone_sizes, 1)+1
-%         % Zone projection parameters
-%         shape_image = all_img_sizes(i,:);
-%         shape_zones = all_zone_sizes(j,:);
-%         % I) Feature extraction using ZONE
-%         [database] = make_database(train_data, method, shape_image, shape_zones);
-%         % Save the features in .mat file
-%         save(['size_' num2str(shape_image(1)) 'x' num2str(shape_image(2)) ...
-%             '_zone_' num2str(shape_zones(1)) 'x' num2str(shape_zones(2)) ...
-%             '_learning'], 'database', 'train_label');
-%     end
-% end
+for i = 1:size(all_img_sizes, 1)+1
+    for j = 1:size(all_zone_sizes, 1)+1
+        % Zone projection parameters
+        shape_image = all_img_sizes(i,:);
+        shape_zones = all_zone_sizes(j,:);
+        % I) Feature extraction using ZONE
+        [database] = make_database(train_data, method, shape_image, shape_zones);
+        % Save the features in .mat file
+        save(['size_' num2str(shape_image(1)) 'x' num2str(shape_image(2)) ...
+            '_zone_' num2str(shape_zones(1)) 'x' num2str(shape_zones(2)) ...
+            '_learning'], 'database', 'train_label');
+    end
+end
 
 number_items_in_vector = zeros(1, size(all_img_sizes,1) ... 
     *size(all_zone_sizes,1));
@@ -65,8 +65,8 @@ for i = 1:size(all_img_sizes(1))+1
         number_items_in_vector(length_index) = size(database,2);
         
         % Calculate overlap
-        chevauchement(database, train_label)
-        %overlaps(length_index) = chevauchement(database, train_label);
+        %chevauchement(database, train_label)
+        overlaps(length_index) = chevauchement(database, train_label);
         length_index = length_index +1;
     end
 end
