@@ -10,12 +10,21 @@ if r == 3
     imglecture=[x,img,x];
     imglecture=[y;imglecture;y]; 
     puiss=[1 2 4 8 16 32 64 128];
+    puiss_carr =  [1 2 4; ...
+                  128 0 8; ...
+                  64 32 16];
     
     for i= 2:1:29
         for j=2:1:29
             A=imglecture(i-1:i+1,j-1:j+1);
             B=[A(1,1), A(1,2), A(1,3), A(2,3), A(3,3), A(3,2),A(3,1),A(2,1)];
-            img(i-1,j-1)=sum(sum((B>imglecture(i,j)).*puiss))
+            B = B >= imglecture(i,j)
+            display('puiss lineaire');
+            img(i-1,j-1) = sum(sum((B).*puiss))
+%             display('puiss carre');
+%             sum(sum((B).*puiss_carr))
+            
+            
        end 
     end
     
