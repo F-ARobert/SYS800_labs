@@ -20,11 +20,10 @@ for i = 1:1:length(dataset)
         database(i,:) = extractProjZone(img, parameters1, parameters2);
 	%
      elseif strcmpi(method, 'LBP')
-        % TO DO
-
-        % ADD: method to calculate number of colums in dataset. This will
+        % Calculate number of colums in dataset. This will
         % speed up execution
-        database = [];
+        nb_columns = ((28/b)^2) * 128; 
+        database = zeros(size(dataset,1),nb_columns);
         database(i,:) = extractLBP(img, parameters1, parameters2);
 	%
     end
