@@ -21,6 +21,7 @@ for i = 1:1:length(dataset)
 	%
      elseif strcmpi(method, 'LBP')
         % TO DO
+
         % ADD: method to calculate number of colums in dataset. This will
         % speed up execution
         database = [];

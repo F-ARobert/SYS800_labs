@@ -21,9 +21,10 @@ train_label = mnisttrain(:, 1);
 % test_label = mnisttest(:, 1);
 
 %% 
-Comment this part to use the LBP method
+
+% Comment this part to use the LBP method
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        Zone projection method
+%        Zone projection method
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 method = 'ZoneProject';
 
@@ -43,7 +44,7 @@ for i = 1:size(all_img_sizes, 1)+1
             '_learning'], 'database', 'train_label');
     end
 end
-%
+%%
 number_items_in_vector = zeros(1, size(all_img_sizes,1) ... 
     *size(all_zone_sizes,1));
 overlaps = zeros(1, size(all_img_sizes,1) ... 
@@ -71,19 +72,23 @@ for i = 1:size(all_img_sizes(1))+1
     end
 end
 
-
 %% Comment this section if the zone projection method is used
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %               LBP method
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TO DO ...... 
-% method = 'LBP';
+method = 'LBP';
 % parameters
-% 
+% Taille de fenetre
+r = [3 5];
+
+% Taille de zones
+b = [4 7 14];
+
 % II) Feature extraction using LBP
-% [database] = make_database(train_data, method , parameters);
-% % Sauvegarder l'information dans un fichier .mat
-% save(['lbp_' num2str(nb_p) '_learning'], 'database', 'train_label');
+[database] = make_database(train_data, method , parameters);
+% Sauvegarder l'information dans un fichier .mat
+save(['lbp_' num2str(nb_p) '_learning'], 'database', 'train_label');
 
 
 %% II) feature reduction
