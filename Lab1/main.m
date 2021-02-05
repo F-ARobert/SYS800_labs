@@ -90,7 +90,7 @@ b = [4 7 14];
 
 for i = 1:numel(r)
     for j = 1:numel(b)
-        [database] = make_database(train_data, method , parameters);
+        [database] = make_database(train_data, method , r(i), b(j));
         % Sauvegarder l'information dans un fichier .mat
         save(['lbp_' num2str(nb_p) '_learning'], 'database', 'train_label');
     end
