@@ -26,7 +26,7 @@ Comment this part to use the LBP method
         Zone projection method
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 method = 'ZoneProject';
-parameters:
+
 all_img_sizes = [60 50; 100 80];
 all_zone_sizes = [5 5; 10 10];
 
