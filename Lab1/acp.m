@@ -30,3 +30,4 @@ V = V(:,1:nb_dim);
 
 % % Calcule des valeurs projetées
 % T = B*V;
+end
