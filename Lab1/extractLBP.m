@@ -30,8 +30,8 @@ elseif r==5
     imglecture=[x,imglecture,x];
     imglecture=[y;imglecture;y];
     puiss=[1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384 32768];
-    for i= 3:1:29
-        for j=3:1:29
+    for i= 3:1:30
+        for j=3:1:30
             A=imglecture(i-2:i+2,j-2:j+2);
             B=[A(1,1), A(1,2), A(1,3), A(1,4), A(1,5), A(2,5), A(3,5), A(4,5), A(5,5), A(5,4), A(5,3), A(5,2), A(5,1), A(4,1), A(3,1), A(2,1)]
             img(i-1,j-1)=sum(sum((B>imglecture(i,j)).*puiss));
