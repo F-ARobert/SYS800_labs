@@ -28,6 +28,7 @@ elseif r==5
     y=zeros(1,32);
     imglecture=[x,imglecture,x];
     imglecture=[y;imglecture;y];
+    % On dirait qu'il manque des valeurs
     puiss=[1 2 4 8 16;32768 0 0 0 32;16384 0 0 0 64;8192 0 0 0 128;4096 2048 1024 512 256];
     for i= 3:1:29
         for j=3:1:29
