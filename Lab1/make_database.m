@@ -25,7 +25,7 @@ for i = 1:1:length(dataset)
         % ADD: method to calculate number of colums in dataset. This will
         % speed up execution
         database = [];
-        database(i) = extractLBP(img, parameters1, parameters2);
+        database(i,:) = extractLBP(img, parameters1, parameters2);
 	%
     end
 end
