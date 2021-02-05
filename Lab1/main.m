@@ -33,15 +33,16 @@ all_zone_sizes = [5 5; 10 10];
 
 for i = 1:size(all_img_sizes, 1)
     for j = 1:size(all_zone_sizes, 1)
-%         % Zone projection parameters
-          shape_image = all_img_sizes(i,:);
-          shape_zones = all_zone_sizes(j,:);
-%         % I) Feature extraction using ZONE
-%         [database] = make_database(train_data, method, shape_image, shape_zones);
-%         Save the features in .mat file
-%         save(['size_' num2str(shape_image(1)) 'x' num2str(shape_image(2)) ...
-%             '_zone_' num2str(shape_zones(1)) 'x' num2str(shape_zones(2)) ...
-%             '_learning'], 'database', 'train_label');
+        % Zone projection parameters
+        shape_image = all_img_sizes(i,:);
+        shape_zones = all_zone_sizes(j,:);
+        
+        % I) Feature extraction using ZONE
+        [database] = make_database(train_data, method, shape_image, shape_zones);
+        Save the features in .mat file
+        save(['size_' num2str(shape_image(1)) 'x' num2str(shape_image(2)) ...
+            '_zone_' num2str(shape_zones(1)) 'x' num2str(shape_zones(2)) ...
+            '_learning'], 'database', 'train_label');
     end
 end
 %%
@@ -56,19 +57,19 @@ for i = 1:size(all_img_sizes(1))
         % Zone projection parameters
         shape_image = all_img_sizes(i,:);
         shape_zones = all_zone_sizes(j,:);
-%         
-%         % Load dataset
-%         load(['size_' num2str(shape_image(1)) 'x' num2str(shape_image(2)) ...
-%             '_zone_' num2str(shape_zones(1)) 'x' num2str(shape_zones(2)) ...
-%             '_learning.mat'])
-%         
-%         % Get length of vector F
-%         number_items_in_vector(length_index) = size(database,2);
-%         
-%         % Calculate overlap
-%         %chevauchement(database, train_label)
-%         overlaps(length_index) = chevauchement(database, train_label);
-%         length_index = length_index +1;
+        
+        % Load dataset
+        load(['size_' num2str(shape_image(1)) 'x' num2str(shape_image(2)) ...
+            '_zone_' num2str(shape_zones(1)) 'x' num2str(shape_zones(2)) ...
+            '_learning.mat'])
+        
+        % Get length of vector F
+        number_items_in_vector(length_index) = size(database,2);
+        
+        % Calculate overlap
+        %chevauchement(database, train_label)
+        overlaps(length_index) = chevauchement(database, train_label);
+        length_index = length_index +1;
     end
 end
 
@@ -88,11 +89,12 @@ b = [4 7 14];
 % II) Feature extraction using LBP
 
 for i = 1:numel(r)
-[database] = make_database(train_data, method , parameters);
-% Sauvegarder l'information dans un fichier .mat
-save(['lbp_' num2str(nb_p) '_learning'], 'database', 'train_label');
+    for j = 1:numel(b)
+        [database] = make_database(train_data, method , parameters);
+        % Sauvegarder l'information dans un fichier .mat
+        save(['lbp_' num2str(nb_p) '_learning'], 'database', 'train_label');
+    end
 end
-
 %% II) feature reduction
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Dimensionality reduction using PCA
