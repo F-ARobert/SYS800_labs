@@ -5,10 +5,10 @@ function output = chevauchement(database,labels)
 database = database';
 labels = labels';
 [nb_features,nb_samples] = size(database);
-%% FOR TESTING
-nb_samples = nb_samples/100;
-labels = labels(1:nb_samples);
-%%
+% %% FOR TESTING
+% nb_samples = nb_samples/100;
+% labels = labels(1:nb_samples);
+% %%
 
 decision = zeros(1,nb_samples);
 

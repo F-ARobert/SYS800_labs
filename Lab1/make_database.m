@@ -10,7 +10,7 @@ function [database, labels] = make_database(dataset, method, parameters1, parame
     elseif strcmpi(method, 'LBP')
         % Calculate number of colums in dataset. This will
         % speed up execution
-        nb_columns = ((28/b)^2) * 128; 
+        nb_columns = ((28/parameters2)^2) * 128; 
         database = zeros(size(dataset,1),nb_columns);
     end
     

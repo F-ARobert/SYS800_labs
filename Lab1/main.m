@@ -74,6 +74,9 @@ for i = 1:size(all_img_sizes(1))+1
     end
 end
 
+save('Number_features_and_overlap_zone_projection', ...
+    'number_items_in_vector', 'overlaps');
+
 %% Comment this section if the zone projection method is used
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %               LBP method
@@ -98,6 +101,10 @@ for i = 1:numel(r)
             '_learning'], 'database', 'train_label');
     end
 end
+
+save('Number_features_and_overlap_LBP', ...
+    'number_items_in_vector', 'overlaps');
+
 %% II) feature reduction
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Dimensionality reduction using PCA
