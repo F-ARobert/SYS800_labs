@@ -39,7 +39,8 @@ for i = 1:size(all_img_sizes, 1)
         
         % I) Feature extraction using ZONE
         [database] = make_database(train_data, method, shape_image, shape_zones);
-        Save the features in .mat file
+        
+        % Save the features in .mat file
         save(['size_' num2str(shape_image(1)) 'x' num2str(shape_image(2)) ...
             '_zone_' num2str(shape_zones(1)) 'x' num2str(shape_zones(2)) ...
             '_learning'], 'database', 'train_label');
@@ -86,14 +87,15 @@ r = [3 5];
 % Taille de zones
 b = [4 7 14];
 
-% II) Feature extraction using LBP
-
 for i = 1:numel(r)
     for j = 1:numel(b)
         % II) Feature extraction using LBP
         [database] = make_database(train_data, method , r(i), b(j));
-        % Sauvegarder l'information dans un fichier .mat
-        save(['lbp_' num2str(nb_p) '_learning'], 'database', 'train_label');
+        
+        % Save the features in .mat file
+        save(['window_' num2str(r(i)) 'x' num2str(r(i)) ...
+            '_bloc_' num2str(b(j)) 'x' num2str(b(j)) ...
+            '_learning'], 'database', 'train_label');
     end
 end
 %% II) feature reduction
