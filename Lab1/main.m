@@ -139,3 +139,34 @@ save(['size_' num2str(img_sizes(1)) 'x' num2str(img_sizes(2)) ...
 test_database_reduced = projection_acp(test_database,V);
 save('reduced_test_database_zone_project', ...
     'test_database_reduced', 'test_label');
+
+%%
+% LBP PCA
+% Load appropriate database
+load('window_5x5_bloc_4x4_learning.mat')
+[V, G] = acp(database, energy);
+
+reduced_train_database = projection_acp(database,V);
+save('reduced_train_database_LBP', ...
+    'reduced_train_database', 'train_label');
+%
+%TO DO 
+%Project the database into the principal components 
+Load test dataset 
+mnisttest = csvread('mnist_test.csv');
+test_data = mnisttest(:, 2:785);
+test_label = mnisttest(:, 1);
+
+% Make full test database
+img_sizes = [100 80];
+zone_sizes = [5 5];
+method = 'ZoneProject';
+[test_database] = make_database(test_data, method, img_sizes, zone_sizes);
+save(['size_' num2str(img_sizes(1)) 'x' num2str(img_sizes(2)) ...
+            '_zone_' num2str(zone_sizes(1)) 'x' num2str(zone_sizes(2)) ...
+            '_test'], 'test_database', 'test_label');
+%%        
+% Reduce test database
+test_database_reduced = projection_acp(test_database,V);
+save('reduced_test_database_zone_project', ...
+    'test_database_reduced', 'test_label');
