@@ -35,7 +35,7 @@ elseif r==5
         for j=3:1:30
             A=imglecture(i-2:i+2,j-2:j+2);
             B=[A(1,1), A(1,2), A(1,3), A(1,4), A(1,5), A(2,5), A(3,5), A(4,5), A(5,5), A(5,4), A(5,3), A(5,2), A(5,1), A(4,1), A(3,1), A(2,1)];
-            img(i-2,j-2)=sum(sum((B>=imglecture(i,j)).*puiss));
+            img(i-2,j-2)=floor(sum(sum((B>=imglecture(i,j)).*puiss))/256);
             
        end 
     end
@@ -51,9 +51,9 @@ indice=0;
 for i= 1:b:28
         for j=1:b:28
             indice=indice+128;
-            m=img(i:i+b-1,j:j+b-1);
+            m=floor((img(i:i+b-1,j:j+b-1)/2)+1);
             m=m(:);
-            mzero(indice-127:indice)=hist(m,128)
+            mzero(indice-127:indice)=hist(m,[1:128]);
         end
         
 end
@@ -64,3 +64,4 @@ database=mzero;
             
             
 end 
+
