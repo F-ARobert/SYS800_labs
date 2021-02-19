@@ -119,7 +119,6 @@ reduced_train_database = projection_acp(database,V);
 save('reduced_train_database_zone_project', ...
     'reduced_train_database', 'train_label');
 %%
-% TO DO 
 % Project the database into the principal components 
 % Load test dataset 
 mnisttest = csvread('mnist_test.csv');
@@ -150,7 +149,6 @@ reduced_train_database = projection_acp(database,V);
 save('reduced_train_database_LBP', ...
     'reduced_train_database', 'train_label');
 %
-%TO DO 
 %Project the database into the principal components 
 %Load test dataset 
 mnisttest = csvread('mnist_test.csv');
