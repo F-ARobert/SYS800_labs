@@ -37,3 +37,7 @@ html/
 /mnist_test.csv
 /mnist_train.csv
 /window*
+/size600*
+/size1000*
+/size6000*
+/size10000*
