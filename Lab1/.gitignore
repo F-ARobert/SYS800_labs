@@ -36,3 +36,4 @@ html/
 # Large data file
 /mnist_test.csv
 /mnist_train.csv
+/window*
