@@ -1,25 +1,31 @@
-function [database, labels] = make_database(dataset, method, parameters)
+function [database, labels] = make_database(dataset, method, parameters1, parameters2)
 % feature extraction using the ZONE projection method and the LBP technique
 %
 %
-ind = 0; 
-database = [];
-labels = [];
-
-display(length(dataset))
-for i = 1:1:length(dataset)  
-    tmp = dataset(i, :);
-    display(i)
-    %figure; image(i1');colormap(gray)
+    labels = [];
+    %display(length(dataset));
     if strcmpi(method, 'ZoneProject')
-        % TO DO
-	%
-        database = extractProjZone(img, parameters);
-	%
-     elseif strcmpi(method, 'LBP')
-        % TO DO
-	%
-        database = extractLBP(img, parameters);
-	%
+        nb_columns = prod(parameters1./parameters2)+sum(parameters1./parameters2);
+        database = zeros(size(dataset,1),nb_columns);
+    elseif strcmpi(method, 'LBP')
+        % Calculate number of colums in dataset. This will
+        % speed up execution
+        nb_columns = ((28/parameters2)^2) * 128; 
+        database = zeros(size(dataset,1),nb_columns);
+    end
+    
+    for i = 1:1:length(dataset)  
+        tmp = dataset(i, :); % Extract img vector
+        %display(i)
+        img = make_img_matrix(tmp);
+        % Uncomment below to visualize img
+        %colormap( gray );
+        %imagesc( img );
+
+        if strcmpi(method, 'ZoneProject')
+            database(i,:) = extractProjZone(img, parameters1, parameters2);
+        elseif strcmpi(method, 'LBP')
+            database(i,:) = extractLBP(img, parameters1, parameters2);
+        end
     end
 end
