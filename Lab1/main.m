@@ -80,7 +80,6 @@ save('Number_features_and_overlap_zone_projection.mat', ...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %               LBP method
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TO DO ...... 
 method = 'LBP';
 % parameters
 % Taille de fenetre
