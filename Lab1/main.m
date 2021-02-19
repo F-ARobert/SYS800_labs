@@ -100,6 +100,26 @@ for i = 1:numel(r)
             '_learning'], 'database', 'train_label');
     end
 end
+number_items_in_vector = zeros(1,6);
+overlaps = zeros(1,6);
+length_index = 1;
+for i = 1:numel(r)
+    for j = 1:numel(b)
+        
+        % Load dataset
+        load(['window_' num2str(r(i)) 'x' num2str(r(i)) ...
+            '_bloc_' num2str(b(j)) 'x' num2str(b(j)) ...
+            '_learning.mat'])
+        
+        % Get length of vector F
+        number_items_in_vector(length_index) = size(database,2);
+        
+        % Calculate overlap
+        %chevauchement(database, train_label)
+        overlaps(length_index) = chevauchement(database, train_label);
+        length_index = length_index +1;
+    end
+end
 
 save('Number_features_and_overlap_LBP.mat', ...
     'number_items_in_vector', 'overlaps');
