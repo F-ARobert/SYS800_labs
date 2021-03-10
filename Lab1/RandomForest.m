@@ -40,8 +40,8 @@ for x = 1:length(NumTrees)
             
             data(row,:) = [NumTrees(x) NumPredictorsToSample(j) ...
                 MinLeafSize(i) time error(end)];
-            display(NumTrees(x), NumPredictorsToSample(j), ...
-                MinLeafSize(i), time, error(end))
+            display([NumTrees(x) NumPredictorsToSample(j) ...
+                MinLeafSize(i) time error(end)])
             row = row + 1;
         end
     end
