@@ -13,6 +13,8 @@ method = 'ZoneProject';
 
 [model, results] = RandomForest(method);
 
+method = 'LBP';
 
+[model, results] = RandomForest(method);
 
 %%

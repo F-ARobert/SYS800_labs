@@ -6,7 +6,7 @@ function [model, results] = RandomForest(method)
 %               'LBP' or 'ZoneProject'.
 
 
-NumTrees = [10 100 500 1000 2000];
+NumTrees = [10 100 500 2000];
 MinLeafSize = [2 5 10];
 
 if strcmpi(method, 'ZoneProject')
@@ -14,7 +14,7 @@ if strcmpi(method, 'ZoneProject')
    NumPredictorsToSample = [5:5:size(reduced_train_database,2)-1];
 elseif strcmpi(method, 'LBP')
    load reduced_train_database_LBP.mat
-   NumPredictorsToSample = [5:5:size(reduced_train_database,2)-1];
+   NumPredictorsToSample = [5:50:size(reduced_train_database,2)-1];
 else
     error('Invalid method name');
 end
