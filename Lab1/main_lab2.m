@@ -97,3 +97,4 @@ xlabel('Label'), ylabel('Nombre'), title('Erreurs de classifications');
 axis([-1 10 0 70]);
 
 c_lbp = confusionmat(lbp_results(:,1),lbp_results(:,2));
+
