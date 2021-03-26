@@ -6,8 +6,8 @@ function [model, results] = RandomForest(method)
 %               'LBP' or 'ZoneProject'.
 
 
-NumTrees = [10 100 500 2000];
-MinLeafSize = [2 5 10];
+NumTrees = [1500];
+MinLeafSize = [2 5];
 
 if strcmpi(method, 'ZoneProject')
    load reduced_train_database_zone_project.mat
@@ -32,7 +32,8 @@ for x = 1:length(NumTrees)
             model = TreeBagger(NumTrees(x),reduced_train_database, train_label, ...
                 'MinLeafSize', MinLeafSize(i), ...
                 'NumPredictorsToSample', NumPredictorsToSample(j), ...
-                'OOBPrediction', 'on');
+                'OOBPrediction', 'on', ...
+                'Options', statset('UseParallel',true));
             time = toc;
             
             % Which error do we keep? All of them or only last?
