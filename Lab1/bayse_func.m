@@ -7,8 +7,8 @@ function [tx_erreur, temps_entrainement, temps_test, test_pred, mini] = bayse_fu
         load('reduced_test_database_zone_project')
 
         % Slice to the good size and take the good number of features
-        reduced_train_database = reduced_train_database(1:k,:)
-        train_label = train_label(1:k)
+%         reduced_train_database = reduced_train_database(1:k,:)
+%         train_label = train_label(1:k)
 
         
     elseif strcmpi(method, 'LBP')
@@ -16,8 +16,8 @@ function [tx_erreur, temps_entrainement, temps_test, test_pred, mini] = bayse_fu
         load('reduced_test_database_LBP')
         
         % Slice to the good size and take the good number of features
-        reduced_train_database = reduced_train_database(1:k,:)
-        train_label = train_label(1:k)
+%         reduced_train_database = reduced_train_database(1:k,:)
+%         train_label = train_label(1:k)
 
     end
     
@@ -84,7 +84,7 @@ function [tx_erreur, temps_entrainement, temps_test, test_pred, mini] = bayse_fu
 
     output = sum(test_label(1:n) ~= test_pred)/n
     
-    
+    test_pred = test_pred
     tx_erreur = output
     temps_entrainement = t_apprentissage
     temps_test = t_test
